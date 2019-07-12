@@ -6,7 +6,7 @@
 /*   By: nmafa <nmafa@student.wethinkcode.co.za>    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/12 12:13:17 by nmafa             #+#    #+#             */
-/*   Updated: 2019/07/12 16:11:59 by nmafa            ###   ########.fr       */
+/*   Updated: 2019/07/12 16:19:25 by nmafa            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,6 @@ int get_next_line(int fd, char **line)
 		return -1;
 	if (!str_read)
 		str_read = ft_memalloc(1);
-	if (!ft_strtrim(str_read))
-		return 1;
 	while (read(fd, &buff, BUFF_SIZE) > 0)
 	{
 		str_read = ft_strjoin(str_read, buff);
@@ -49,7 +47,6 @@ int get_next_line(int fd, char **line)
 	}
 	proccess_str(&str_read, &line);
 	// printf("++ %s\n", str_read);
-
 	return 1;
 }
 
@@ -57,35 +54,11 @@ int main()
 {
 	char *line;
 	int fd = open("ff", O_RDONLY);
-	// while (get_next_line(fd, &line) > 0)
-	// {
-	// 	printf("---> %s\n", line);
-	// }
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
-	printf("---> %s\n", line);
-	get_next_line(fd, &line);
+	while (get_next_line(1, &line) > 0)
+	{
+		printf("---> %s\n", line);
+	}
+	get_next_line(1, &line);
 	printf("---> %s\n", line);
 
 	return 0;
